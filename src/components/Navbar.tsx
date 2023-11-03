@@ -1,4 +1,4 @@
-import PizzaLogo from "../assets/pizzaria.jpg";
+import PizzaLogo from "/assets/pizzaria.jpg";
 import styled from "styled-components";
 const categories = ["All", "Chicken", "Vegetarian", "Meat"];
 
