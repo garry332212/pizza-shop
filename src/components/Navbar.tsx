@@ -1,6 +1,4 @@
-
 import PizzaLogo from "../assets/pizzaria.jpg";
-import { BsCart2 } from "react-icons/bs";
 import styled from "styled-components";
 const categories = ["All", "Chicken", "Vegetarian", "Meat"];
 
@@ -13,19 +11,10 @@ const Navbar: React.FC<filterData> = ({
   onCategoryChange,
   selectedCategory,
 }) => {
-
-
-
-
   return (
     <NavbarWrapper>
       <div className="navbar">
-        <div className="logo">
-          <img src={PizzaLogo} />
-        </div>
-        <div className="cart">
-          <BsCart2 />
-        </div>
+        <img src={PizzaLogo} />
       </div>
       <div className="categories">
         <div className="tags">
@@ -52,24 +41,8 @@ const NavbarWrapper = styled.div`
     justify-content: center;
     align-items: center;
 
-    .logo {
-      img {
-        height: 250px;
-      }
-    }
-
-    .cart {
-      font-size: 2rem;
-      position: absolute;
-      right: 50px;
-      border-radius: 50%;
-      background: #f5f5f5;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
+    img {
+      height: 250px;
     }
   }
   .categories {
