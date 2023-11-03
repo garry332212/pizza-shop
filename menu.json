@@ -68,7 +68,7 @@
     "name": "Margherita",
     "description": "Tomato Base, Mozzarella, Tomato and Basil",
     "price": 20.99,
-    "image": "./src/assets/margherita.jpg",
+    "image": "./src/assets/margherita1.jpg",
     "category": "Vegetarian"
   },
   {
