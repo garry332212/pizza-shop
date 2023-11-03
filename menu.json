@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "name": "Chikcen Slingshot",
+    "description": "Tomato Base, Mayonnaise, Garlic, Onion, Black Pepper, Butter Chicken Sauce, Pineapple, Chicken, Capsicum, Mozzarella, Chives and Hot Peri-Peri Sauce not for sensitive stomach",
+    "price": 21.99,
+    "image": "./src/assets/chciken_slingshot.jpg",
+    "category": "Chicken"
+  },
+  {
+    "id": 2,
+    "name": "Chipotle Chicken",
+    "description": "Chipotle Base, Garlic, Onion, Chicken, Chilli Flakes, Black Pepper, Capsicum, Chipotle Sauce and Mozzarella",
+    "price": 21.99,
+    "image": "./src/assets/chipotle_chicken.jpg",
+    "category": "Chicken"
+  },
+  {
+    "id": 3,
+    "name": "Chicken Peri Peri",
+    "description": "Tomato Base, Garlic, Onion, Chicken, Capsicum, Mayonnaise, Black Pepper, Oregano, Hot Peri-Peri Sauce not suitable for sensitive stomach and Mozzarella",
+    "price": 20.99,
+    "image": "./src/assets/chicken_peri.jpeg",
+    "category": "Chicken"
+  },
+  {
+    "id": 4,
+    "name": "Tandoori Chicken",
+    "description": "TTomato Base, Mozzarella, Onion, Mushrooms, Capsicum and Tandoori Chicken",
+    "price": 20.99,
+    "image": "./src/assets/tandoori_chicken.jpg",
+    "category": "Chicken"
+  },
+  {
+    "id": 5,
+    "name": "Hot & Spicy Beef",
+    "description": "Tomato Base, Mozzarella, Garlic, Black Pepper, Chilli Flakes, Roasted Beef Cubes, Jalapenos, Tomoatoes, Capsicum, Garlic Aioli Suace and Onion",
+    "price": 20.99,
+    "image": "./src/assets/hot-spicy_beef.jpg",
+    "category": "Meat"
+  },
+  {
+    "id": 6,
+    "name": "Lamb Slingshot",
+    "description": "Tomato Base, Mayonnaise, Garlic, Onion, Black Pepper, Makhani Sauce, Pineapple, Lamb Cubes, Capsicum, Mozzarella, Chives and Hot Peri-Peri Sauce not for sensitive stomach",
+    "price": 20.99,
+    "image": "./src/assets/lamb_slingshot.jpg",
+    "category": "Meat"
+  },
+  {
+    "id": 7,
+    "name": "Meaty Mix",
+    "description": "Tomato Base, Mozzarella, Salami, Capsicum, Meat Slices, Onion, Garlic, Meatballs, Meat Cubes, BBQ Sauce and Pineapple",
+    "price": 20.99,
+    "image": "./src/assets/meaty_mix.jpg",
+    "category": "Meat"
+  },
+  {
+    "id": 8,
+    "name": "Cheese Lovers",
+    "description": "Tomato Base and Mozzarella",
+    "price": 20.99,
+    "image": "./src/assets/cheese_lovers.jpg",
+    "category": "Vegetarian"
+  },
+  {
+    "id": 9,
+    "name": "Margherita",
+    "description": "Tomato Base, Mozzarella, Tomato and Basil",
+    "price": 20.99,
+    "image": "./src/assets/margherita.jpg",
+    "category": "Vegetarian"
+  },
+  {
+    "id": 10,
+    "name": "Vegeterian Pizza",
+    "description": "Tomato Base, Mozzarella, Salami, Capsicum,  Onion, Garlic,  Tomato, Mashrooms and Pineapple",
+    "price": 20.99,
+    "image": "./src/assets/veg_pizza.jpg",
+    "category": "Vegetarian"
+    
+  },
+  {
+    "id": 11,
+    "name": "Vegetarian Slingshot 🥚 Egg",
+    "description": "Tomato Base, Garlic, Onion, Ginger, Pineapple, Mayonnaise, Hot Peri-Peri Sauce Not For Sensitive Stomach, Makhani Sauce, Black Pepper, Capsicum, Mozzarella, Coriander and Eggs",
+    "price": 21.99,
+    "image": "./src/assets/chciken_slingshot.jpg",
+    "category": "Vegetarian"
+  },
+  {
+    "id": 12,
+    "name": "Garlic Lamb & Pepper",
+    "description": "Tomato Base, Aioli Sauce, Garlic, Black Pepper, Onion, Tomatoes, Capsicum, Lamb Cubes, Mozzarella and Coriander",
+    "price": 20.99,
+    "image": "./src/assets/Garlic_lamb.jpg",
+    "category": "Meat"
+  }
+]
