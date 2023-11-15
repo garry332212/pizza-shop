@@ -92,7 +92,7 @@ const MenuWrapper = styled.div`
     }
 
     img {
-      height: 200px;
+      height: auto;
       width: 200px;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
@@ -102,6 +102,8 @@ const MenuWrapper = styled.div`
       width: 100%;
       margin-left: 10px;
       padding-right: 10px;
+      display: flex;
+      flex-direction: column;
       h1 {
         font-family: "Roboto Condensed", sans-serif;
       }
@@ -114,7 +116,7 @@ const MenuWrapper = styled.div`
     }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       padding-right: 10px;
       font-family: "Roboto Condensed", sans-serif;
       font-weight: bolder;
@@ -149,8 +151,12 @@ const MenuWrapper = styled.div`
   }
   @media (max-width: 368px) {
     .menuContainer {
+      height: 130px;
+      width: 40%;
+    background-color: white;
+    margin: 20px;
       img {
-        height: 150px;
+        height: 130px;
       }
 
       .topInfo {

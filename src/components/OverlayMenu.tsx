@@ -28,7 +28,11 @@ const OverlayMenu: React.FC<PropsType> = ({
           <p>{selectedPizza.description}</p>
           <h2>${selectedPizza.price}</h2>
           <div className="quantity">
-            <button onClick={() => setQuantity(quantity > 1 ? quantity -1 : 1)}>-</button>
+            <button
+              onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+            >
+              -
+            </button>
             {quantity}
             <button onClick={() => setQuantity(quantity + 1)}>+</button>
           </div>
@@ -61,29 +65,27 @@ const PizzaOverlay = styled.div`
 
   .overlayContent {
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 400px; /* Adjust the maximum width as needed */
-  }
-
-  .closeButton {
+    max-width: 300px;
   }
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 300px;
+    height: 250px;
     border-radius: 10px;
   }
 
   .pizzaInfo {
-    padding: 20px;
+    padding: 10px;
     h1 {
       font-family: "Roboto Condensed", sans-serif;
     }
     p {
       font-family: "Poppins", sans-serif;
+      font-size: 14px;
     }
   }
 
