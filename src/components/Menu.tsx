@@ -36,8 +36,6 @@ const Menu: React.FC<Category> = ({ selectedCategory }) => {
     setSelectedPizza(null);
   };
 
- 
-
   return (
     <MenuWrapper>
       {filteredMenu.map((pizza: PizzaTypes) => (
@@ -54,17 +52,15 @@ const Menu: React.FC<Category> = ({ selectedCategory }) => {
           </div>
         </div>
       ))}
-      
+
       {selectedPizza && (
         <OverlayMenu
           selectedPizza={selectedPizza}
           closeOverlay={closePizzaOverlay}
-          
           quantity={quantity}
           setQuantity={setQuantity}
         />
       )}
-         
     </MenuWrapper>
   );
 };
@@ -79,12 +75,13 @@ const MenuWrapper = styled.div`
   .menuContainer {
     display: flex;
     width: 40%;
+    height: 250px;
     background-color: white;
     margin: 20px;
     border-radius: 30px;
     box-shadow: 1px 1px 10px -2px gray;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: scale(0.9);
     &:hover {
       box-shadow: 1px 1px 10px -2px red;
@@ -92,8 +89,8 @@ const MenuWrapper = styled.div`
     }
 
     img {
-      height: auto;
-      width: 200px;
+      height: 250px;
+      width: 250px;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
     }
@@ -104,6 +101,7 @@ const MenuWrapper = styled.div`
       padding-right: 10px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       h1 {
         font-family: "Roboto Condensed", sans-serif;
       }
@@ -114,10 +112,9 @@ const MenuWrapper = styled.div`
         text-overflow: ellipsis;
       }
     }
-
     h2 {
       font-size: 1.2rem;
-      padding-right: 10px;
+      padding: 5px;
       font-family: "Roboto Condensed", sans-serif;
       font-weight: bolder;
       text-align: right;
@@ -130,45 +127,45 @@ const MenuWrapper = styled.div`
       margin: 10px;
     }
   }
-
   @media (max-width: 576px) {
     .menuContainer {
+      height: 150px;
       img {
-        height: auto;
+        height: 150px;
+        width: 150px;
       }
-
       .topInfo {
+        height: 160px;
         h1 {
+          font-size: 20px;
         }
         p {
-          font-size: 16px;
+          font-size: 11px;
         }
         h2 {
-          padding-right: 10px;
+          font-size: 1rem;
         }
       }
     }
   }
   @media (max-width: 368px) {
     .menuContainer {
-      height: 130px;
-      width: 40%;
-    background-color: white;
-    margin: 20px;
-      img {
-        height: 130px;
+      margin: 0px;height: 120px;
+      img{
+        height: 120px;
+        width: 120px;
       }
-
       .topInfo {
+        height: 135px;
         h1 {
           font-size: 16px;
         }
         p {
-          font-size: 13px;
+          font-size: 10px;
         }
         h2 {
-          padding-right: 10px;
           font-size: 1rem;
+          padding: 8px;
         }
       }
     }

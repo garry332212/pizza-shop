@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { PizzaTypes } from "./Menu";
+import { useEffect } from "react";
 
 interface PropsType {
   selectedPizza: PizzaTypes;
@@ -18,6 +19,15 @@ const OverlayMenu: React.FC<PropsType> = ({
   const handleAddToCart = () => {
     setQuantity(1);
   };
+
+  //to stop the background from scrolling while overlay is active!!
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  });
 
   return (
     <PizzaOverlay>
@@ -54,11 +64,11 @@ const PizzaOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #1f1e1e7c;
+  background-color: #1f1e1eb5;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100; /* Ensure it's on top of other elements */
+  z-index: 100;
   box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
   color: black;
   box-sizing: border-box;
@@ -69,13 +79,13 @@ const PizzaOverlay = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    max-width: 300px;
+    max-width: 350px;
+    transition: all 0.3s ease-in-out;
   }
 
   img {
-    width: 300px;
-    height: 250px;
-    border-radius: 10px;
+    width: 350px;
+    height: 330px;
   }
 
   .pizzaInfo {
@@ -119,6 +129,65 @@ const PizzaOverlay = styled.div`
     &:nth-child(6) {
       background-color: #ff6969;
       color: #fff;
+    }
+  }
+
+  @media screen and (max-width: 568px) {
+    .overlayContent {
+      padding: 5px;
+      max-width: 300px;
+    }
+
+    img {
+      width: 300px;
+      height: 280px;
+      border-radius: 10px;
+    }
+
+    .pizzaInfo {
+      padding: 5px;
+      h1 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 13px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+  @media screen and (max-width: 368px) {
+    .overlayContent {
+      padding: 5px;
+      max-width: 250px;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    .pizzaInfo {
+      h1 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 11px;
+      }
+    }
+
+    button {
+      font-family: "Roboto Condensed", sans-serif;
+      background-color: #f4ce14;
+      color: #000;
+      border: none;
+      padding: 6px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin: 0 10px;
     }
   }
 `;
