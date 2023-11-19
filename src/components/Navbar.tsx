@@ -1,5 +1,8 @@
+import { Fragment, useState } from "react";
 import PizzaLogo from "/assets/pizzaria.jpg";
 import styled from "styled-components";
+import Cart from "./Cart";
+import { useCart } from "./CartContext";
 const categories = ["All", "Chicken", "Vegetarian", "Meat"];
 
 interface filterData {
@@ -11,10 +14,26 @@ const Navbar: React.FC<filterData> = ({
   onCategoryChange,
   selectedCategory,
 }) => {
+
+  const [openCloseCart, setOpenCloseCart] = useState(false);
+  const { state } = useCart();
+
+  //!cart Open Handler
+  const openCartHandler =() =>{
+    setOpenCloseCart(true)
+  }
+  const closeCartHandler =() =>{
+    setOpenCloseCart(false)
+  }
   return (
+    <Fragment>
+   
     <NavbarWrapper>
       <div className="navbar">
         <img src={PizzaLogo} />
+        <h2 onClick={openCartHandler}>
+          Cart <span>{state.cart.length}</span>
+        </h2>
       </div>
       <div className="categories">
         <div className="tags">
@@ -30,6 +49,10 @@ const Navbar: React.FC<filterData> = ({
         </div>
       </div>
     </NavbarWrapper>
+            {openCloseCart && (
+              <Cart closeCart ={closeCartHandler}/>
+            )}
+    </Fragment>
   );
 };
 
@@ -38,13 +61,36 @@ export default Navbar;
 const NavbarWrapper = styled.div`
   .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     img {
       height: 250px;
     }
+
+    > h2 {
+      display: flex;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      background: #113946;
+      padding: 5px 10px;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+
+      span {
+        margin-left: 6px;
+        background-color: #ff6969;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
+
   .categories {
     display: flex;
     flex-direction: column;

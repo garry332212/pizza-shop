@@ -2,7 +2,6 @@ import { useState } from "react";
 import menu from "../../menu.json";
 import styled from "styled-components";
 import OverlayMenu from "./OverlayMenu";
-
 export interface PizzaTypes {
   id: number;
   name: string;
@@ -17,7 +16,6 @@ interface Category {
 const Menu: React.FC<Category> = ({ selectedCategory }) => {
   const [selectedPizza, setSelectedPizza] = useState<PizzaTypes | null>(null);
 
-  const [quantity, setQuantity] = useState(1);
 
   //!FILTER THE MENU BASED ON THE SELECTED CATEGORY
 
@@ -57,8 +55,6 @@ const Menu: React.FC<Category> = ({ selectedCategory }) => {
         <OverlayMenu
           selectedPizza={selectedPizza}
           closeOverlay={closePizzaOverlay}
-          quantity={quantity}
-          setQuantity={setQuantity}
         />
       )}
     </MenuWrapper>

@@ -1,9 +1,7 @@
-import styled from "styled-components";
-
+import { CartProvider } from "./CartContext";
 import Menu from "./Menu";
 import Navbar from "./Navbar";
 import { useState } from "react";
-
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -13,17 +11,15 @@ const Home = () => {
   };
 
   return (
-    <HomeWrapper>
+    <CartProvider>
       <Navbar
         onCategoryChange={handleSelectedCategory}
         selectedCategory={selectedCategory}
       />
 
       <Menu selectedCategory={selectedCategory} />
-    </HomeWrapper>
+    </CartProvider>
   );
 };
 
 export default Home;
-
-const HomeWrapper = styled.div``;

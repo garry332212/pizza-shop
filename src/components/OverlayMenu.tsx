@@ -1,34 +1,39 @@
 import styled from "styled-components";
 import { PizzaTypes } from "./Menu";
-import { useEffect } from "react";
+import { useCart } from "./CartContext";
 
 interface PropsType {
   selectedPizza: PizzaTypes;
   closeOverlay: () => void;
-
-  setQuantity: (quantity: number) => void;
-  quantity: number;
 }
 
-const OverlayMenu: React.FC<PropsType> = ({
-  selectedPizza,
-  closeOverlay,
-  setQuantity,
-  quantity,
-}) => {
-  const handleAddToCart = () => {
-    setQuantity(1);
+const OverlayMenu: React.FC<PropsType> = ({ selectedPizza, closeOverlay }) => {
+  const { state, dispatch } = useCart();
+
+  const addToCartHandler = () => {
+    // Dispatch the action to add the selected pizza to the cart
+    dispatch({ type: "ADD_TO_CART", payload: selectedPizza });
+    // Close the overlay
+    closeOverlay();
   };
 
-  //to stop the background from scrolling while overlay is active!!
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  //*increase the Pizza Quantity
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  });
+  const increaseQuantity = (id: number) => {
+    dispatch({ type: "INCREASE_QUANTITY", payload: id });
+   
+  };
 
+  const decreaseQuantity = (id: number) => {
+    const foundItem = state.cart.find((item) => item.id === id);
+  
+    // Ensure foundItem is not undefined and quantity doesn't go below 1
+    if (foundItem && foundItem.quantity > 1) {
+      dispatch({ type: "DECREASE_QUANTITY", payload: id });
+    }
+  };
+  
+  
   return (
     <PizzaOverlay>
       <div className="overlayContent">
@@ -38,15 +43,19 @@ const OverlayMenu: React.FC<PropsType> = ({
           <p>{selectedPizza.description}</p>
           <h2>${selectedPizza.price}</h2>
           <div className="quantity">
-            <button
-              onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
-            >
+            <button onClick={() => decreaseQuantity(selectedPizza.id)}>
               -
             </button>
-            {quantity}
-            <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <span>
+              {state.cart.find((item) => item.id === selectedPizza.id)
+                ?.quantity || 0}
+            </span>
+
+            <button onClick={() => increaseQuantity(selectedPizza.id)}>
+              +
+            </button>
           </div>
-          <button onClick={handleAddToCart}>Add to Cart</button>
+          <button onClick={addToCartHandler}>Add to Cart</button>
           <button className="closeButton" onClick={closeOverlay}>
             Close
           </button>
