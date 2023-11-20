@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { PizzaTypes } from "./Menu";
 import { useCart } from "./CartContext";
+import { useEffect } from "react";
 
 interface PropsType {
   selectedPizza: PizzaTypes;
@@ -8,7 +9,7 @@ interface PropsType {
 }
 
 const OverlayMenu: React.FC<PropsType> = ({ selectedPizza, closeOverlay }) => {
-  const { state, dispatch } = useCart();
+  const {dispatch } = useCart();
 
   const addToCartHandler = () => {
     // Dispatch the action to add the selected pizza to the cart
@@ -17,21 +18,15 @@ const OverlayMenu: React.FC<PropsType> = ({ selectedPizza, closeOverlay }) => {
     closeOverlay();
   };
 
-  //*increase the Pizza Quantity
+    //to stop the background from scrolling while overlay is active!!
+    useEffect(() => {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    });
 
-  const increaseQuantity = (id: number) => {
-    dispatch({ type: "INCREASE_QUANTITY", payload: id });
-   
-  };
-
-  const decreaseQuantity = (id: number) => {
-    const foundItem = state.cart.find((item) => item.id === id);
-  
-    // Ensure foundItem is not undefined and quantity doesn't go below 1
-    if (foundItem && foundItem.quantity > 1) {
-      dispatch({ type: "DECREASE_QUANTITY", payload: id });
-    }
-  };
+ 
   
   
   return (
@@ -43,17 +38,6 @@ const OverlayMenu: React.FC<PropsType> = ({ selectedPizza, closeOverlay }) => {
           <p>{selectedPizza.description}</p>
           <h2>${selectedPizza.price}</h2>
           <div className="quantity">
-            <button onClick={() => decreaseQuantity(selectedPizza.id)}>
-              -
-            </button>
-            <span>
-              {state.cart.find((item) => item.id === selectedPizza.id)
-                ?.quantity || 0}
-            </span>
-
-            <button onClick={() => increaseQuantity(selectedPizza.id)}>
-              +
-            </button>
           </div>
           <button onClick={addToCartHandler}>Add to Cart</button>
           <button className="closeButton" onClick={closeOverlay}>

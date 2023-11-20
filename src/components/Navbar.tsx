@@ -14,66 +14,69 @@ const Navbar: React.FC<filterData> = ({
   onCategoryChange,
   selectedCategory,
 }) => {
-
   const [openCloseCart, setOpenCloseCart] = useState(false);
   const { state } = useCart();
 
   //!cart Open Handler
-  const openCartHandler =() =>{
-    setOpenCloseCart(true)
-  }
-  const closeCartHandler =() =>{
-    setOpenCloseCart(false)
-  }
+  const openCartHandler = () => {
+    setOpenCloseCart(true);
+  };
+  const closeCartHandler = () => {
+    setOpenCloseCart(false);
+  };
   return (
     <Fragment>
    
-    <NavbarWrapper>
-      <div className="navbar">
-        <img src={PizzaLogo} />
+      <NavbarWrapper>
+      <div className="cartFloating">
         <h2 onClick={openCartHandler}>
           Cart <span>{state.cart.length}</span>
         </h2>
       </div>
-      <div className="categories">
-        <div className="tags">
-          {categories.map((category) => (
-            <h3
-              key={category}
-              onClick={() => onCategoryChange(category)}
-              className={selectedCategory === category ? "active" : ""}
-            >
-              {category}
-            </h3>
-          ))}
+        <div className="navbar">
+          <img src={PizzaLogo} />
         </div>
-      </div>
-    </NavbarWrapper>
-            {openCloseCart && (
-              <Cart closeCart ={closeCartHandler}/>
-            )}
+        <div className="categories">
+          <div className="tags">
+            {categories.map((category) => (
+              <h3
+                key={category}
+                onClick={() => onCategoryChange(category)}
+                className={selectedCategory === category ? "active" : ""}
+              >
+                {category}
+              </h3>
+            ))}
+          </div>
+        </div>
+      </NavbarWrapper>
+      {openCloseCart && <Cart closeCart={closeCartHandler} />}
     </Fragment>
   );
 };
 
 export default Navbar;
 
+
 const NavbarWrapper = styled.div`
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 
-    img {
-      height: 250px;
-    }
-
-    > h2 {
+.cartFloating{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #113946;
+  margin: 7px;
+  padding: 7px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+  > h2 {
       display: flex;
       align-items: center;
       font-family: "Poppins", sans-serif;
       background: #113946;
-      padding: 5px 10px;
+      height: 0px;
       border-radius: 10px;
       color: #fff;
       cursor: pointer;
@@ -89,6 +92,17 @@ const NavbarWrapper = styled.div`
         justify-content: center;
       }
     }
+}
+
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      height: 250px;
+    }
+
   }
 
   .categories {
@@ -133,6 +147,27 @@ const NavbarWrapper = styled.div`
     }
   }
   @media (max-width: 630px) {
+    .cartFloating{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #113946;
+  margin: 10px;
+  padding: 3px;
+ //TODO:
+  > h2 {
+  span {
+        margin-left: 6px;
+        background-color: #ff6969;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+}
     .navbar {
       .logo {
         img {
@@ -151,14 +186,9 @@ const NavbarWrapper = styled.div`
   }
   @media (max-width: 438px) {
     .navbar {
-      .cart {
-        font-size: 1.5rem;
-        right: 10px;
-        top: 8px;
-        width: 30px;
-        height: 30px;
-        position: fixed;
-      }
+      flex-wrap: wrap;
+      width: 80%;
+      margin: auto;
     }
     .categories {
       .tags {
@@ -171,3 +201,5 @@ const NavbarWrapper = styled.div`
     }
   }
 `;
+
+
